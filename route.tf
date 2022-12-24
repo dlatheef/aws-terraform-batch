@@ -20,9 +20,9 @@ resource "aws_route_table" "IBM_Pvt_Route" {
   /* route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_nat_gateway.IBM_Nat_gateway.id
-  } */
-  tags = {
-    Name = "IBM_Pvt_Route-With-NAT"
+  }  */
+   tags = {
+    Name = "IBM_Pvt_Route"
   }
 }
 
@@ -45,20 +45,22 @@ resource "aws_route_table" "IBM_Pvt_Route" {
 #### This is  Public Subnet association ###
 
 resource "aws_route_table_association" "IBM_Pub_sub_ass1" {
-  subnet_id      = aws_subnet.pub_sub1.id
+  count = 3
+  subnet_id      = element(aws_subnet.pub_subnets.*.id, count.index)
   route_table_id = aws_route_table.IBM_Pub_Route.id
 }
 
 
 /* resource "aws_route_table_association" "IBM_Pub_sub_ass2" {
-  subnet_id      = aws_subnet.pub-sub2.id
+  subnet_id      = element(aws_subnet.pub-sub2.id
   route_table_id = aws_route_table.IBM_Pub_Route.id
 } */
 
 #### This is  Private Subnet association ###
 
 resource "aws_route_table_association" "IBM_Pvt_sub_ass" {
-  subnet_id      = aws_subnet.pvt_sub1.id
+  count = 3
+  subnet_id      = element(aws_subnet.pvt-subnets.*.id,count.index)
   route_table_id = aws_route_table.IBM_Pvt_Route.id 
   }
 
