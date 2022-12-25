@@ -7,13 +7,13 @@ variable "region" {
 variable "access_key" {
   description = "access-key"
     type        = string
-  default     = "AKIAW4SSCAOR5NX3X44C"
+  default     = ""
 }
 
 variable "secret_key" {
   description = "secret-key"
     type        = string
-  default     = "+vhrhsgLuWcxZkkQf1EOWQ9LTUrYwsXISF+DIGkI"
+  default     = ""
 }
 
 variable "vpc_cidr" {
