@@ -1,76 +1,37 @@
-variable "region" {
-  description = "selected-region"
-    type        = string
-  default     = "us-east-1"
+variable "region" {}
+variable "instance_type" {}
+variable "access_key" {}
+variable "secret_key" {}
+#variable "ami_id" {}
+variable "vpc_cidr" {}   
+variable "vpc_name"     {}
+variable "env" {}
+variable "public_subnets" {
+    type = list
+    default = ["us-east-1a","us-east-1b","us-east-1c"]
 }
 
-variable "access_key" {
-  description = "access-key"
-    type        = string
-  default     = ""
+variable "pub_sub_cidrs" {
+    type = list
+    default = ["20.0.2.0/24","20.0.3.0/24","20.0.4.0/24","20.0.5.0/24","20.0.6.0/24"]
 }
 
-variable "secret_key" {
-  description = "secret-key"
-    type        = string
-  default     = ""
+variable "private_subnets" {
+    type = list
+    default = ["us-east-1a","us-east-1b","us-east-1c"]
 }
 
-variable "vpc_cidr" {
-  description = "vpc_cidr-block"
-    type        = string
-  default     = "10.0.0.0/16"
+variable "pvt_sub_cidrs" {
+    type = list
+    default = ["20.0.7.0/24","20.0.8.0/24","20.0.9.0/24","20.0.10.0/24","20.0.11.0/24"]
 }
 
-/* variable "az_zone" {
-  default = "us-east-1a"
-} */
-variable "az_zones" {
-  description = "Availability zones"
-  type        = list
-  default     = ["us-east-1a","us-east-1b","us-east-1c"]
+variable "amis" {
+type = map
+    description = "AMIs by region"
+    default = {
+        us-east-1 = "ami-08c40ec9ead489470" # ubuntu 20.04 LTS
+		us-east-2 = "ami-097a2df4ac947655f" # ubuntu 20.04 LTS
+		
+    }
 }
-
-variable "pub_cidrs" {
-  description = "Public_subnets"
-  type = list
-  default = ["10.0.1.0/24","10.0.2.0/24","10.0.3.0/24"] 
-}
-
-variable "pvt_cidrs" {
-  description = "Private_subnets"
-  type = list
-  default = ["10.0.4.0/24","10.0.5.0/24","10.0.6.0/24"] 
-}
-### tag names ###
-/* variable "pub_sub_name1" {
-    description = "public-sub-name1"
-    type = string
-    default = "IBM-vpc-pub-sub1"
-}
-
-variable "pub_sub_name2" {
-    description = "public-sub-name2"
-    type = string
-    default = "IBM-vpc-pub-sub2"
-}
-
-#### tag names for pvt subnets ###
-
-variable "pvt_sub_name1" {
-    description = "private-sub-name1"
-    type = string
-    default = "IBM-vpc-pvt-sub1"
-}
-
-variable "pvt_sub_name2" {
-    description = "private-sub-name2"
-    type = string
-    default = "IBM-vpc-pvt-sub2"
-} */
-
-
-
-
-
-

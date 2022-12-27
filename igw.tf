@@ -1,8 +1,7 @@
-resource "aws_internet_gateway" "IBM_IGW" {
-  vpc_id = aws_vpc.IBM-vpc.id
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.IBM_VPC.id
 
   tags = {
-    Name = "IBM_IGW"
+    Name = "IBM-VPC-IGW"
   }
 }
-
